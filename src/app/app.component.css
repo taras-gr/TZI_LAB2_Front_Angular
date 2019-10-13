@@ -2,39 +2,40 @@
     margin: 0 auto;
     width: 70%;
     height: 800px;
-    outline: 1px solid red;
     padding: 0 20px;
 }
 
 .block {
     float: left;
-    outline: 1px solid green;
-    height: 800px;
-    padding: 0 20pxs;
+    height: 100%;
+    padding: 0 20px;
 }
 
 #block1, #block3{
-    outline: 1px solid green;;
     width: 40%;
-    height: 800px;
+    /* height: 800px; */
 }
 
 #block2{
-    outline: 1px solid green;;
     width: 20%;
-    height: 800px;
+    /* height: 800px; */
     padding: 30px 20px;
 }
 
-.wrapper textarea {
-    height: 500px;
+.clear {
+    clear: both;
 }
 
-h3 {
-    margin: 0 auto;
+.wrapper textarea {
+    height: 100%;
 }
 
 button, input {
     margin-top: 20px;
     width: 100%;
+}
+
+h1, h3 {
+    text-align: center;
+    margin: 0 auto;
 }

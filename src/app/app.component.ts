@@ -1,47 +1,78 @@
 import { Component} from '@angular/core';
 import { HttpService} from './http.service';
 import {DecryptedMessage} from './decryptedMessage';
+import { EncryptedMessage } from './encryptedMessage';
    
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
-    // template: `<div class="form-group">
-    //                 <label>Имя</label>
-    //                 <textarea name="username" [(ngModel)]="decryptedMessage.decryptedText"></textarea>
-    //             </div>
-    //             <div class="form-group">
-    //                 <label>Имя</label>
-    //                 <input class="form-control" name="username" [(ngModel)]="decryptedMessage.alphabet" />
-    //             </div>
-    //             <div class="form-group">
-    //                 <label>Возраст</label>
-    //                 <input class="form-control" type="number" name="age" [(ngModel)]="decryptedMessage.key" />
-    //             </div>
-    //             <div class="form-group">
-    //                 <button class="btn btn-default" (click)="submit(decryptedMessage)">Отправить</button>
-    //             </div>
-    //             <div *ngIf="done">
-    //                 <div>Получено от сервера:</div>
-    //                 <div>Имя: {{recivedDecryptedMessage.decryptedText}}</div>
-    //             </div>`,
     providers: [HttpService]
 })
 export class AppComponent { 
     inputText : string;
+    outputText : string;
     alphabet : string;
     key : number;
    
     decryptedMessage : DecryptedMessage = new DecryptedMessage();
+    encryptedMessage : EncryptedMessage = new EncryptedMessage();
       
-    recivedDecryptedMessage: DecryptedMessage; // полученный пользователь
+    recivedDecryptedMessage: DecryptedMessage = new DecryptedMessage();
+    recivedEncryptedMessage: EncryptedMessage = new EncryptedMessage();
+
     done: boolean = false;
     constructor(private httpService: HttpService){}
-    submit(decryptedMessage: DecryptedMessage){
-        this.httpService.encryptPost(decryptedMessage)
-                .subscribe(
-                    (data: DecryptedMessage) => {this.recivedDecryptedMessage=data; this.done=true;},
-                    error => console.log(error)
-                );
+
+    encrypt(decryptedMessage: DecryptedMessage){
+
+        if (this.alphabet != undefined && this.alphabet != '' &&
+            this.inputText != undefined && this.inputText != '' &&
+            this.key != undefined && this.key != null)
+        {
+            decryptedMessage.alphabet = this.alphabet;
+            decryptedMessage.decryptedText = this.inputText;
+            decryptedMessage.key = this.key;
+
+            this.httpService.encryptPost(decryptedMessage)
+                    .subscribe(
+                        (data: DecryptedMessage) => {this.outputText=data.decryptedText; this.done=true;},
+                        error => console.log(error)
+                    );   
+        }  
+        else 
+        {
+            alert("Fill all required fields!!!");
+        }       
+    }
+
+    decrypt(encryptedMessage: EncryptedMessage){
+        if (this.alphabet != undefined && this.alphabet != '' &&
+            this.inputText != undefined && this.inputText != '')
+        {
+            encryptedMessage.alphabet = this.alphabet;
+            encryptedMessage.encryptedText = this.inputText;
+
+            this.httpService.decryptPost(encryptedMessage)
+                    .subscribe(
+                        (data: EncryptedMessage) => {this.outputText=data.encryptedText; this.done=true;},
+                        error => console.log(error)
+                    );      
+        }   
+        else 
+        {
+            alert("Fill all required fields!!!");
+        }      
+    }
+
+    clearIO(){
+        this.inputText = '';
+        this.outputText = '';
+    }
+
+    clearAll(){
+        this.clearIO();
+        this.key = undefined;
+        this.alphabet = '';
     }
 }

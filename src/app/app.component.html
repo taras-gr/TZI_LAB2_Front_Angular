@@ -1,16 +1,20 @@
 <div class="wrapper">
+  <h1>Caesar Cipher</h1>
   <div id="block1" class="block">
     <h3>Input text:</h3>
-    <textarea class="form-control" [(ngModel)]="decryptedMessage.decryptedText" name="inputText"></textarea>
+    <textarea class="form-control" [(ngModel)]="inputText" name="inputText"></textarea>
   </div>
   <div id="block2" class="block">    
-    <input class="form-control" [(ngModel)]="decryptedMessage.alphabet" name="key">
-    <input class="form-control" [(ngModel)]="decryptedMessage.key" name="alphabet">
-    <button class="btn btn-primary" (click)="submit(decryptedMessage)">Encrypt</button>
-    <button class="btn btn-primary">Decrypt</button>
+    <input class="form-control" placeholder="Alphabet" [(ngModel)]="alphabet" name="key">
+    <input class="form-control" placeholder="Key" [(ngModel)]="key" name="alphabet">
+    <button class="btn btn-primary" (click)="encrypt(decryptedMessage)">Encrypt</button>
+    <button class="btn btn-primary" (click)="decrypt(encryptedMessage)">Decrypt</button>
+    <button class="btn btn-warning" (click)="clearIO()">Clear input/output</button>
+    <button class="btn btn-danger" (click)="clearAll()">Clear all fields</button>
   </div>
   <div id="block3" class="block">
       <h3>Output text:</h3>
-      <textarea class="form-control" [(ngModel)]="recivedDecryptedMessage.decryptedText" name="outputText"></textarea>
+      <textarea class="form-control" [(ngModel)]="outputText" name="outputText"></textarea>
   </div>
+  <div id="clear"></div>
 </div>
