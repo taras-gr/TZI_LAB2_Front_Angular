@@ -28,6 +28,9 @@ import {DecryptedMessage} from './decryptedMessage';
     providers: [HttpService]
 })
 export class AppComponent { 
+    inputText : string;
+    alphabet : string;
+    key : number;
    
     decryptedMessage : DecryptedMessage = new DecryptedMessage();
       

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { DecryptedMessage} from './decryptedMessage';
+import { EncryptedMessage } from './encryptedMessage';
   
 @Injectable()
 export class HttpService{
@@ -18,5 +19,14 @@ export class HttpService{
             Key: decryptedMessage.key
             };
         return this.http.post('https://localhost:44318/api/encrypt', body); 
+    }
+
+    decryptPost(encryptedMessage: EncryptedMessage){
+         
+        const body = {
+            encryptedText: encryptedMessage.encryptedText, 
+            Alphabet: encryptedMessage.alphabet
+            };
+        return this.http.post('https://localhost:44318/api/decrypt', body); 
     }
 }
