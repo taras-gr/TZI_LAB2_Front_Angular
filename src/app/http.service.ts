@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from './user';
+import { DecryptedMessage} from './decryptedMessage';
   
 @Injectable()
 export class HttpService{
@@ -10,9 +10,13 @@ export class HttpService{
     //http://localhost:60489/Home/PostUser  ASP.NET Core MVC
     //http://localhost:8080/angular/setUser.php     PHP
      
-    postData(user: User){
+    encryptPost(decryptedMessage: DecryptedMessage){
          
-        const body = {name: user.name, age: user.age};
-        return this.http.post('https://localhost:44341/api/values', body); 
+        const body = {
+            DecryptedText: decryptedMessage.decryptedText, 
+            Alphabet: decryptedMessage.alphabet,
+            Key: decryptedMessage.key
+            };
+        return this.http.post('https://localhost:44318/api/encrypt', body); 
     }
 }
