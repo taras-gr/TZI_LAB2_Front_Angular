@@ -12,7 +12,7 @@ import { EncryptedMessage } from './encryptedMessage';
 export class AppComponent { 
     inputText : string;
     outputText : string;
-    alphabet : string;
+    alphabet : string = " .,;-'ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     key : number;
    
     decryptedMessage : DecryptedMessage = new DecryptedMessage();
