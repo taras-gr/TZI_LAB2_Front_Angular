@@ -7,9 +7,6 @@ import { EncryptedMessage } from './encryptedMessage';
 export class HttpService{
   
     constructor(private http: HttpClient){ }
-      
-    //http://localhost:60489/Home/PostUser  ASP.NET Core MVC
-    //http://localhost:8080/angular/setUser.php     PHP
      
     encryptPost(decryptedMessage: DecryptedMessage){
          
@@ -18,7 +15,7 @@ export class HttpService{
             Alphabet: decryptedMessage.alphabet,
             Key: decryptedMessage.key
             };
-        return this.http.post('https://localhost:44318/api/encrypt', body); 
+        return this.http.post('https://localhost:44318/api/ceasar/encrypt', body); 
     }
 
     decryptPost(encryptedMessage: EncryptedMessage){
@@ -27,6 +24,6 @@ export class HttpService{
             encryptedText: encryptedMessage.encryptedText, 
             Alphabet: encryptedMessage.alphabet
             };
-        return this.http.post('https://localhost:44318/api/decrypt', body); 
+        return this.http.post('https://localhost:44318/api/ceasar/decrypt', body); 
     }
 }
