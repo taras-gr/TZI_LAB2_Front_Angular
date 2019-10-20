@@ -4,7 +4,7 @@ import { DecryptedMessage} from './decryptedMessage';
 import { EncryptedMessage } from './encryptedMessage';
   
 @Injectable()
-export class HttpService{
+export class HttpServiceCeasar{
   
     constructor(private http: HttpClient){ }
      
