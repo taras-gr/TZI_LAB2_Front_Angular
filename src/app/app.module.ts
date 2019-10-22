@@ -12,12 +12,15 @@ import { HttpServiceVigenere } from './vigenere/http.service'
 
 import { HttpClientModule } from '@angular/common/http';
 import { VigenereComponent } from './vigenere/vigenere.component';
+import { SubstitutionComponent } from './substitution/substitution.component';
+import { HttpServiceSubstitution } from './substitution/http.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     CeasarComponent,
-    VigenereComponent
+    VigenereComponent,
+    SubstitutionComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import { VigenereComponent } from './vigenere/vigenere.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [HttpServiceCeasar, HttpServiceVigenere],
+  providers: [HttpServiceCeasar, HttpServiceVigenere, HttpServiceSubstitution],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
