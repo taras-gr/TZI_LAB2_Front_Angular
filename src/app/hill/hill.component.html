@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <h1>Substitution Cipher</h1>
+  <div id="block1" class="block">
+    <h3>Input text:</h3>
+    <textarea class="form-control" [(ngModel)]="inputText" name="inputText"></textarea>
+  </div>
+  <div id="block2" class="block">    
+    <input class="form-control" placeholder="Alphabet" [(ngModel)]="alphabet" name="key">
+    <input class="form-control" placeholder="Password" [(ngModel)]="password" name="alphabet">
+    <button class="btn btn-primary" (click)="encrypt(inputMessage)">Encrypt</button>
+    <button class="btn btn-primary" (click)="decrypt(inputMessage)">Decrypt</button>
+    <button class="btn btn-warning" (click)="clearIO()">Clear input/output</button>
+    <button class="btn btn-danger" (click)="clearAll()">Clear all fields</button>
+  </div>
+  <div id="block3" class="block">
+      <h3>Output text:</h3>
+      <textarea class="form-control" [(ngModel)]="outputText" name="outputText"></textarea>
+  </div>
+  <div id="clear"></div>
+</div>

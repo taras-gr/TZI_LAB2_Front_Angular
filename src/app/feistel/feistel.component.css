@@ -1,0 +1,41 @@
+.wrapper {
+    margin: 0 auto;
+    width: 70%;
+    height: 800px;
+    padding: 0 20px;
+}
+
+.block {
+    float: left;
+    height: 100%;
+    padding: 0 20px;
+}
+
+#block1, #block3{
+    width: 40%;
+    /* height: 800px; */
+}
+
+#block2{
+    width: 20%;
+    /* height: 800px; */
+    padding: 30px 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.wrapper textarea {
+    height: 100%;
+}
+
+button, input {
+    margin-top: 20px;
+    width: 100%;
+}
+
+h1, h3 {
+    text-align: center;
+    margin: 0 auto;
+}

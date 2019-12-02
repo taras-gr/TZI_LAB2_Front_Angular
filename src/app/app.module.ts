@@ -14,13 +14,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { VigenereComponent } from './vigenere/vigenere.component';
 import { SubstitutionComponent } from './substitution/substitution.component';
 import { HttpServiceSubstitution } from './substitution/http.service';
+import { HillComponent } from './hill/hill.component';
+import { HttpServiceHill } from './hill/http.service';
+import { FeistelComponent } from './feistel/feistel.component';
+import { HttpServiceFeistel } from './feistel/http.service';
+import { DesComponent } from './des/des.component';
+import { ResComponent } from './res/res.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CeasarComponent,
     VigenereComponent,
-    SubstitutionComponent
+    SubstitutionComponent,
+    HillComponent,
+    FeistelComponent,
+    DesComponent,
+    ResComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +40,7 @@ import { HttpServiceSubstitution } from './substitution/http.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [HttpServiceCeasar, HttpServiceVigenere, HttpServiceSubstitution],
+  providers: [HttpServiceCeasar, HttpServiceVigenere, HttpServiceSubstitution, HttpServiceHill, HttpServiceFeistel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
